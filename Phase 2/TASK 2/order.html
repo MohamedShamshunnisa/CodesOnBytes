@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Food Order</title>
+</head>
+<body>
+    <h2>Order Details...</h2>
+    <h5>Order Placed Successfully<br><b><h3>Total Order bill:250/-</h3></b></h5>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+<?php
+function processOrder($foodItem, $quantity) {
+    // Replace this with your actual database-saving or email-sending logic
+    // For simplicity, echoing the details in this example
+    echo "Order Details:\n";
+    echo "Food Item: $foodItem\n";
+    echo "Quantity: $quantity\n";
+    echo "Price: $price\n";
+    echo "Order Placed successfully....!!\n"
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $foodItem = isset($_POST["foodItem"]) ? $_POST["foodItem"] : '';
+    $quantity = isset($_POST["quantity"]) ? $_POST["quantity"] : '';
+    $price = isset($_POST["price"]) ? $_POST["price"] : '';
+
+    if (!empty($foodItem) && isValidQuantity($quantity)) {
+        processOrder($foodItem, $quantity);
+    } else {
+        echo "Error: Incomplete or invalid order information.";
+    }
+}
+
+function isValidQuantity($quantity) {
+    // Basic validation: Check if quantity is a positive integer
+    return preg_match('/^[1-9]\d*$/', $quantity);
+}
+function isValidOrder($prise) {
+    // Basic validation: Check if quantity is a positive integer
+    return preg_match('/^[1-9]\d*$/', $prise);
+}
+?>
